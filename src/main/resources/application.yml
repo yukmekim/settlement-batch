@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: settlement-batch
+
+  batch:
+    jdbc:
+      initialize-schema: always    # 배치 메타 테이블 자동 생성
+    job:
+      enabled: false               # 앱 시작 시 자동 실행 방지 (스케줄러가 제어)
+
+  datasource:
+    url: jdbc:h2:mem:settlement;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true                # H2 콘솔 활성화 (http://localhost:8080/h2-console)
+      path: /h2-console
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+settlement:
+  schedule:
+    cron: "0 0 2 * * *"           # 매일 새벽 2시
+  chunk-size: 500
+
+logging:
+  level:
+    org.springframework.batch: INFO
+    com.example.settlement: DEBUG
