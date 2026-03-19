@@ -9,12 +9,9 @@ version = '0.0.1-SNAPSHOT'
 description = 'Spring Batch daily settlement system'
 
 java {
-	// JDK 21 설치 후 아래 주석을 해제하고 sourceCompatibility/targetCompatibility 블록을 제거하세요
-	// toolchain {
-	// 	languageVersion = JavaLanguageVersion.of(21)
-	// }
-	sourceCompatibility = JavaVersion.VERSION_17
-	targetCompatibility = JavaVersion.VERSION_17
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
 }
 
 configurations {
