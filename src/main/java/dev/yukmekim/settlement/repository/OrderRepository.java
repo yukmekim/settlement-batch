@@ -1,5 +1,6 @@
-package dev.yukmekim.settlement.domain.order;
+package dev.yukmekim.settlement.repository;
 
+import dev.yukmekim.settlement.domain.order.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDateTime;

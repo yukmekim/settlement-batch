@@ -2,7 +2,7 @@ package dev.yukmekim.settlement.batch.writer;
 
 import dev.yukmekim.settlement.domain.order.OrderStatus;
 import dev.yukmekim.settlement.domain.settlement.DailySettlement;
-import dev.yukmekim.settlement.domain.settlement.DailySettlementRepository;
+import dev.yukmekim.settlement.repository.DailySettlementRepository;
 import dev.yukmekim.settlement.dto.OrderSummary;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.ExitStatus;

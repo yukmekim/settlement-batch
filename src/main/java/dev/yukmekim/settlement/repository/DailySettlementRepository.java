@@ -1,5 +1,6 @@
-package dev.yukmekim.settlement.domain.settlement;
+package dev.yukmekim.settlement.repository;
 
+import dev.yukmekim.settlement.domain.settlement.DailySettlement;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDate;

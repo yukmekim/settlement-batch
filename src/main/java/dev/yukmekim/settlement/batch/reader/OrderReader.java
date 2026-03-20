@@ -1,7 +1,7 @@
 package dev.yukmekim.settlement.batch.reader;
 
 import dev.yukmekim.settlement.domain.order.Order;
-import dev.yukmekim.settlement.domain.order.OrderRepository;
+import dev.yukmekim.settlement.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.NonTransientResourceException;
