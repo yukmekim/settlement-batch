@@ -5,7 +5,9 @@ import dev.yukmekim.settlement.domain.settlement.DailySettlement;
 import dev.yukmekim.settlement.domain.settlement.DailySettlementRepository;
 import dev.yukmekim.settlement.dto.OrderSummary;
 import lombok.RequiredArgsConstructor;
+import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.StepExecution;
+import org.springframework.batch.core.annotation.AfterStep;
 import org.springframework.batch.core.annotation.BeforeStep;
 import org.springframework.batch.item.Chunk;
 import org.springframework.batch.item.ItemWriter;
@@ -52,8 +54,9 @@ public class SettlementWriter implements ItemWriter<OrderSummary> {
         }
     }
 
+    @AfterStep
     @Transactional
-    public void saveSettlement() {
+    public ExitStatus saveSettlement(StepExecution stepExecution) {
         DailySettlement settlement = DailySettlement.builder()
                 .settlementDate(settlementDate)
                 .totalOrderCount(totalOrderCount)
@@ -65,5 +68,6 @@ public class SettlementWriter implements ItemWriter<OrderSummary> {
 
         settlement.complete();
         dailySettlementRepository.save(settlement);
+        return ExitStatus.COMPLETED;
     }
 }
