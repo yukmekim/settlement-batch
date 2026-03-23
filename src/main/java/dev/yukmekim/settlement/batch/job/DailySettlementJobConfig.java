@@ -1,5 +1,6 @@
 package dev.yukmekim.settlement.batch.job;
 
+import dev.yukmekim.settlement.batch.listener.SettlementJobListener;
 import dev.yukmekim.settlement.batch.processor.SettlementProcessor;
 import dev.yukmekim.settlement.batch.reader.OrderReader;
 import dev.yukmekim.settlement.batch.writer.SettlementWriter;
@@ -25,6 +26,7 @@ public class DailySettlementJobConfig {
     private final OrderReader orderReader;
     private final SettlementProcessor settlementProcessor;
     private final SettlementWriter settlementWriter;
+    private final SettlementJobListener settlementJobListener;
 
     @Value("${settlement.chunk-size:500}")
     private int chunkSize;
@@ -32,6 +34,7 @@ public class DailySettlementJobConfig {
     @Bean
     public Job dailySettlementJob() {
         return new JobBuilder("dailySettlementJob", jobRepository)
+                .listener(settlementJobListener)
                 .start(dailySettlementStep())
                 .build();
     }
