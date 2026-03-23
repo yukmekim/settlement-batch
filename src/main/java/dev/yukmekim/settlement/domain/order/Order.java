@@ -40,4 +40,15 @@ public class Order extends BaseTime {
 
     @Column(nullable = false)
     private LocalDateTime orderedAt;
+
+    public static Order create(String orderNo, String productName, Long amount,
+                               OrderStatus status, LocalDateTime orderedAt) {
+        Order order = new Order();
+        order.orderNo = orderNo;
+        order.productName = productName;
+        order.amount = amount;
+        order.status = status;
+        order.orderedAt = orderedAt;
+        return order;
+    }
 }
